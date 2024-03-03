@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH --job-name=jupyter
+#SBATCH --nodes=1     
+#SBATCH --cpus-per-task=4                       # TODO: Specify the amount of cpus needed. 8 in this case
+#SBATCH --gres=gpu:1                            # TODO: Specify the amount of gpus needed. 1 in this case
+#SBATCH --mem=50GB                              # TODO: Specify the amount of memory needed. 50GB in this case
+#SBATCH --time=200:00:00                        # TODO: Specify the amount of time needed. 200 hours in this case
+#SBATCH --nodelist=hariharan-compute-01         # TODO: Specify the node/machine you want to run on. hariharan-compute-01 in this case
+#SBATCH --partition=hariharan                   # TODO: Specify the partition/queue you want to run on. hariharan in this case
+#SBATCH -o out/jupyter.o%j    
+#SBATCH -e out/jupyter.o%j
+
+#Go to the folder you wanna run jupyter in
+cd $HOME
+export XDG_RUNTIME_DIR=""
+
+#Pick a random or predefined port
+port=$(shuf -i 6000-9999 -n 1)
+
+# Forward the picked port to the prince on the same port. 
+# TODO: Replace g2-login with the name of the login node you want to port forward to
+# For this step to run through properly, you need to set up passwordless ssh to the login node.
+/usr/bin/ssh -N -f -R $port:localhost:$port g2-login
+
+#Start the notebook
+jupyter notebook --no-browser --port $port
