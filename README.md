@@ -95,4 +95,4 @@ Note that the login-node has to be the one that you specify in step 1. Also, mak
 2. Passwordless SSH: https://linuxize.com/post/how-to-setup-passwordless-ssh-login/
 
 ## Notes:
-1. Feel free to submit a PR to fix 
+1. Feel free to submit a PR for improvements. 
