@@ -90,6 +90,9 @@ Note that the login-node has to be the one that you specify in step 1. Also, mak
 
 #### Step 6: Open a browser window and go the address **localhost:{port_number}**. Enter the password for your notebook and then you are all set!
 
-### Additional References:
+## Additional References:
 1. G2 Usage: https://it.coecis.cornell.edu/researchit/g2cluster/
 2. Passwordless SSH: https://linuxize.com/post/how-to-setup-passwordless-ssh-login/
+
+## Notes:
+1. Feel free to submit a PR to fix 
